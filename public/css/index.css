@@ -1,0 +1,97 @@
+
+
+.card:hover {
+  border-radius: 10px;
+  border: none;
+  transform: translate(0px, -10px);
+  box-shadow: 0 20px 20px 6px #0c4fab;
+  color: white;
+}
+.card::before {
+  content: "";
+  background-color: #6d95cc;
+  width: 100%;
+  height: 0%;
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  transition: 0.7s;
+}
+.card:hover::before {
+  width: 100%;
+  border-radius: 5px;
+}
+
+
+.img-pop:hover {
+  transform: rotate(-5deg);
+  border-radius: 10px;
+}
+.btn {
+  text-decoration: none;
+border-radius: 15px;
+height: 35px;
+width: 200px;
+
+
+}
+.btn:hover {
+
+  transform: scale(1.1);
+}
+
+
+.pop-container {
+  display: none;
+  z-index: 1000;
+  border-radius: 15px;
+  overflow: inherit;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.pop-content {
+  width: 750px;
+  box-shadow: 0 0 30px 6px #6d95cc;
+  margin: 23px auto;
+}
+.close-btn {
+  top: -20px;
+  left: -20px;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 50%;
+  padding: 5px 13px;
+}
+.active {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  z-index: 1000;
+}
+#aa{
+
+background-color: rgb(223, 16, 16);
+border-radius: 15px;
+color: white;
+
+}
+
+#text1{
+
+background-color: #6d95cc;
+color: white;
+height: 50px;
+border-radius: 15px;
+
+}
+.col-lg-4 {
+  margin-bottom: 20px;
+}
+
