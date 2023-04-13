@@ -15,6 +15,7 @@ class dashboard extends Controller
      return view('admin.index');
     }
 
+
     /**
      * Show the form for creating a new resource.
      */

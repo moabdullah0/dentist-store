@@ -153,29 +153,11 @@
                 <ul class="collapse list-unstyled pl-4 w-100" id="auth">
                     <a class="nav-link pl-3" href="{{url('/admin/add-product')}}"><span class="ml-1">اضافة منتجات</span></a>
                     <a class="nav-link pl-3" href="{{url('/admin/show-product')}}"><span class="ml-1">عرض المنتجات جميعها</span></a>
-                    <a class="nav-link pl-3" href="./auth-register.html"><span class="ml-1">Register</span></a>
-                    <a class="nav-link pl-3" href="./auth-resetpw.html"><span class="ml-1">Reset Password</span></a>
-                    <a class="nav-link pl-3" href="./auth-confirm.html"><span class="ml-1">Confirm Password</span></a>
+
                 </ul>
             </li>
             @endcan
-            <li class="nav-item dropdown">
-                <a href="#layouts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-layout fe-16"></i>
-                    <span class="ml-3 item-text">Layout</span>
-                </a>
-                <ul class="collapse list-unstyled pl-4 w-100" id="layouts">
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="./index.html"><span class="ml-1 item-text">Default</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="./index-horizontal.html"><span class="ml-1 item-text">Top Navigation</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="./index-boxed.html"><span class="ml-1 item-text">Boxed</span></a>
-                    </li>
-                </ul>
-            </li>
+
         </ul>
         <p class="text-muted nav-heading mt-4 mb-1">
             <span>Documentation</span>

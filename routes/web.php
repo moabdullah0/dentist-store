@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -27,11 +27,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::controller(App\Http\Controllers\dashboard\dashboard::class)->group(function(){
+Route::controller(App\Http\Controllers\dashboard\dashboard::class)->middleware('auth')->group(function(){
     Route::get('admin','index');});
 
 require __DIR__.'/auth.php';
-Route::controller(App\Http\Controllers\category\addcategory::class)->group(function(){
+Route::controller(App\Http\Controllers\category\addcategory::class)->middleware('auth')->group(function(){
     Route::get('/admin/add-category','create');
     Route::post('/admin/add-category','store');
     Route::get('/admin/show-category','index');
@@ -40,7 +40,7 @@ Route::controller(App\Http\Controllers\category\addcategory::class)->group(funct
     Route::delete('/admin/delete-category/{id}','destroy');
 });
 
-Route::controller(App\Http\Controllers\product\product::class)->group(function(){
+Route::controller(App\Http\Controllers\product\product::class)->middleware('auth')->group(function(){
     Route::get('/admin/add-product','create');
     Route::post('/admin/add-product','store');
     Route::get('/admin/show-product','index');
@@ -52,5 +52,11 @@ Route::controller(App\Http\Controllers\product\product::class)->group(function()
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles', App\Http\Controllers\RoleController::class);
     Route::resource('users', App\Http\Controllers\UserController::class);
+
+});
+Route::controller(App\Http\Controllers\layoutes\layoutes::class)->group(function(){
+    Route::get('/','index');
+    Route::get('/show-products/{id}','showproduct')->middleware('auth');
+    Route::get('/product-detailes/{id}','show')->middleware('auth');
 
 });
