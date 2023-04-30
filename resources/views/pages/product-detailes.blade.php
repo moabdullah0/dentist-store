@@ -22,7 +22,7 @@
     <div class="container py-5">
         <div class="row d-flex justify-content-center my-4">
             <div class="col-md-8">
-                <div class="card mb-4">
+                <form class="card mb-4">
                     <div class="card-header py-3">
                         <h5 class="mb-0">معلومات المنتج</h5>
                     </div>
@@ -75,29 +75,30 @@
                             <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
                                 <!-- Quantity -->
                                 <div class="d-flex mb-4" style="max-width: 300px">
-                                    <button class="btn btn-primary px-3 me-2"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
 
+                                    <form action="{{url('cartshopping/'.$product->id)}}" method="POST">
+                                        @csrf
+                                        @method('POST')
                                     <div class="form-outline">
-                                        <label class="form-label" for="form1">العدد</label>
+                                        <label class="form-label " for="form1">العدد</label>
+                                        <input type="hidden" name="product_id" value="{{$product->id}}">
                                         <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
 
                                     </div>
 
-                                    <button class="btn btn-primary px-3 ms-2"
-                                            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
+
 
                                 </div>
                                 <!-- Quantity -->
 
 
                             </div>
-                            <a href="" class="btn bg-blue-300 text-black-300 hover:bg-blue-500 text-center w-56 addtocart"><i class="fa-solid fa-cart-shopping mx-2"></i>اضافة الى السلة</a>
-                        </div>
+
+                            <button type="submit" href="" class="btn bg-blue-300 text-black-300 hover:bg-blue-500 text-center w-56 addtocart"><i class="fa-solid fa-cart-shopping mx-2"></i>اضافة الى السلة</button>
+
+                </form>
+
+
                         <!-- Single item -->
 
 

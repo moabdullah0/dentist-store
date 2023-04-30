@@ -1,6 +1,6 @@
 @extends('admin.index')
 @section('content')
-@vite('resources/css/app.css')
+
     <div class="row">
         @foreach ($product as $product)
             <div class=" col-lg-6 grid grid-cols-4  w-50">

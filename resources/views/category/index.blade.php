@@ -1,6 +1,6 @@
 @extends('admin.index')
 @section('content')
-    @vite('resources/css/app.css')
+
 
                 <div class="row">
                    @forelse( $category as $categories)

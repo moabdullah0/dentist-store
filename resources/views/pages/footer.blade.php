@@ -2,20 +2,21 @@
 <footer
     class="text-center text-lg-start text-dark mt-5"
     style="background-color: #ECEFF1"
+    dir=""
 >
     <!-- Section: Social media -->
     <section
-        class="d-flex justify-content-between p-4 text-white"
+        class="d-flex justify-content-between p-4 text-white "
         style="background-color: #229ad6"
     >
         <!-- Left -->
-        <div class="me-5">
+        <div class="me-5 btn11">
             <span>Get connected with us on social networks:</span>
         </div>
         <!-- Left -->
 
         <!-- Right -->
-        <div>
+        <div class="btn11">
             <a href="" class="text-white me-4">
                 <i class="fab fa-facebook-f"></i>
             </a>
@@ -40,7 +41,7 @@
     <!-- Section: Social media -->
 
     <!-- Section: Links  -->
-    <section class="">
+    <section class="btn11">
         <div class=" text-center text-md-start mt-5">
             <!-- Grid row -->
             <div class="row mt-3">

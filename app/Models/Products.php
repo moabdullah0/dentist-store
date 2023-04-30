@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
-class Products extends Model
+use Gloudemans\Shoppingcart\Contracts\Buyable;
+class Products extends Model implements Buyable
 {
     use HasFactory;
     protected $fillable = [
@@ -19,6 +19,7 @@ class Products extends Model
         'status',
         'image', // remove 'image' from the $hidden array
     ];
+
     protected $table='product';
 
     public function category(){
@@ -26,5 +27,24 @@ class Products extends Model
     }
     public function brands(){
         return $this->belongsTo(brands::class);
+    }
+
+
+    public function getBuyableIdentifier($options = null)
+    {
+        return $this->id;
+        // TODO: Implement getBuyableIdentifier() method.
+    }
+
+    public function getBuyableDescription($options = null)
+    {
+        return $this->name;
+        // TODO: Implement getBuyableDescription() method.
+    }
+
+    public function getBuyablePrice($options = null)
+    {
+        return $this->price;
+        // TODO: Implement getBuyablePrice() method.
     }
 }

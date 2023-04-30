@@ -55,8 +55,16 @@ Route::group(['middleware' => ['auth']], function() {
 
 });
 Route::controller(App\Http\Controllers\layoutes\layoutes::class)->group(function(){
-    Route::get('/','index');
+    Route::get('/','index')->name('home.index');
     Route::get('/show-products/{id}','showproduct')->middleware('auth');
-    Route::get('/product-detailes/{id}','show')->middleware('auth');
+    Route::get('/product-detailes/{id}','show')->middleware('auth')->name('product-detailes.show');
+    Route::get('/cart','cart')->name('cart.cart')->middleware('auth');
+    Route::post('/cartshopping/{id}','store')->name('cartcartshopping.store');
+    Route::delete('/cartshopping/{id}', 'destroy')->name('cart.remove');
+    Route::put('/cartshopping/{id}', 'update')->name('cart.edit');
+    Route::get('/carts','carts')->name('carts.carts');
+    Route::get('/products','showallproduct')->name('product.allproduct')->middleware('auth');
+    Route::get('/checkout','checkout')->name('checkout')->middleware('auth');
 
 });
+

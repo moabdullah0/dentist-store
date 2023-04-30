@@ -86,6 +86,7 @@
                     </div>
                     <div class="card-body">
                         <form role="form" method="POST" action="{{ route('register') }}">
+                            @csrf
                             <div class="mb-3">
                                 <input type="text" class="form-control" placeholder="Name" aria-label="Name" name="name" :value="old('name')" required autofocus autocomplete="name">
                             </div>

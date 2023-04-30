@@ -15,49 +15,20 @@
               </svg>
             </a>
         </div>
-        <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="#dashboard" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-home fe-16"></i>
-                    <span class="ml-3 item-text">الاعدادات العامة</span><span class="sr-only">(current)</span>
-                </a>
-                <ul class="collapse list-unstyled pl-4 w-100" id="dashboard">
-                    <li class="nav-item active">
-                        <a class="nav-link pl-3" href="./index.html"><span class="ml-1 item-text">Default</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="./dashboard-analytics.html"><span class="ml-1 item-text">Analytics</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="./dashboard-sales.html"><span class="ml-1 item-text">E-commerce</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="./dashboard-saas.html"><span class="ml-1 item-text">Saas Dashboard</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="./dashboard-system.html"><span class="ml-1 item-text">Systems</span></a>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+
         @can('اعدادات  المستخدمين')
         <p class="text-muted nav-heading mt-4 mb-1">
             <span>المستخدمين</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
 
-            <li class="nav-item dropdown">
+            <li class=" dropdown">
                 <a href="#charts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                     <i class="fe fe-pie-chart fe-16"></i>
                     <span class="ml-3 item-text">اعدادات المستخدمين</span>
                 </a>
                 <ul class="collapse list-unstyled pl-4 w-100" id="charts">
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">تعديل المستخدمين</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="{{url('/admin/add-users')}}"><span class="ml-1 item-text">اضافة مستخدمين</span></a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link pl-3" href="{{'/' .($page='users')}}"><span class="ml-1 item-text">عرض مستخدمين</span></a>
                     </li>
@@ -70,12 +41,7 @@
             <span>الصلاحيات</span>
         </p>
         <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-                <a class="nav-link" href="calendar.html">
-                    <i class="fe fe-calendar fe-16"></i>
-                    <span class="ml-3 item-text">صلاحيات المستخدمين</span>
-                </a>
-            </li>
+
             <li class="nav-item dropdown">
                 <a href="#contact" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                     <i class="fe fe-book fe-16"></i>
@@ -83,8 +49,7 @@
                 </a>
                 <ul class="collapse list-unstyled pl-4 w-100" id="contact">
                     <a class="nav-link pl-3" href="{{'/' .($page='roles')}}"><span class="ml-1">صلاحيات المستخدمين</span></a>
-                    <a class="nav-link pl-3" href="./contacts-grid.html"><span class="ml-1">Contact Grid</span></a>
-                    <a class="nav-link pl-3" href="./contacts-new.html"><span class="ml-1">New Contact</span></a>
+
                 </ul>
             </li>
             <li class="nav-item dropdown">
@@ -123,26 +88,7 @@
                             <span class="ml-1 item-text">عرض الاقسام</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="./page-invoice.html">
-                            <span class="ml-1 item-text">تعديل الاقسام</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="./page-404.html">
-                            <span class="ml-1 item-text">Page 404</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="./page-500.html">
-                            <span class="ml-1 item-text">Page 500</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pl-3" href="./page-blank.html">
-                            <span class="ml-1 item-text">Blank</span>
-                        </a>
-                    </li>
+
                 </ul>
             </li>
             <li class="nav-item dropdown">
