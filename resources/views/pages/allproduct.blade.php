@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
           integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@600;700&family=Noto+Kufi+Arabic:wght@500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500,600">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
 </head>
@@ -49,7 +51,7 @@
                     <i class="ion-ios-star text-center"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i>
                 </div>
                 <figcaption>
-                    <h1 >
+                    <h1  dir="rtl">
                         {{$product->title}}
                     </h1>
                     <div class="price">
@@ -64,9 +66,6 @@
                                         onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                     <i class="fas fa-minus"></i>
                                 </button>-->
-                            @php
-                                $cart = Cart::instance('default')->content();
-                            @endphp
                             @if($cart->where('id',$product->id)->count())
                                 <div class="bg-red-600 mx-5 w-56 rounded-pill"> IN Cart </div>
                             @else
@@ -86,6 +85,7 @@
                                     </button>-->
 
                         </div>
+
                         <!-- Quantity -->
 
 
@@ -94,8 +94,8 @@
                 </figcaption>
                 <button  class="add-to-cart addtocart" type="submit">Add to Cart</button>
                 @endif
-
-
+            </figure>
+            </form>
 
 
 

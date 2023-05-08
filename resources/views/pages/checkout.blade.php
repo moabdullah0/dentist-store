@@ -43,6 +43,7 @@
 
 
     <div class="h-screen grid grid-cols-3">
+
         <div class="lg:col-span-2 col-span-3 bg-indigo-50 space-y-8 px-12">
             <div class="mt-8 p-4 relative flex flex-col sm:flex-row sm:items-center bg-white shadow rounded-md">
                 <div class="flex flex-row items-center border-b sm:border-b-0 w-full sm:w-auto pb-4 sm:pb-0">
@@ -56,31 +57,48 @@
 
             </div>
             <div class="rounded-md">
-                <form id="payment-form" method="POST" action="">
+                <form action="{{url('/checkout-save')}}" id="payment-form" method="POST" action="">
+                    @csrf
                     <section>
+                        @if(session('error'))
+                            <div class="bg-red-500 w-96 h-12 text-start rounded-pill text-center text-white">{{session('error')}}</div>
+                        @endif
                         <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">المعلومات الشخصية</h2>
                         <fieldset class="mb-3 bg-white shadow-lg rounded text-gray-600">
                             <label class="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span class="text-right px-2">الاسم</span>
-                                <input name="name" class="focus:outline-none px-3" placeholder="Try Odinsson" required="">
+                                <input name="name" class="focus:outline-none px-3" placeholder="Try Odinsson" required="" value="{{$user->name}}">
+                            </label>
+                            <label class="flex border-b border-gray-200 h-12 py-3 items-center hidden">
+
+                                <input type="hidden" name="user_id" class="focus:outline-none px-3" placeholder="Try Odinsson" required="" value="{{$user->id}}">
                             </label>
                             <label class="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span class="text-right px-2">الايميل</span>
-                                <input name="email" type="email" class="focus:outline-none px-3" placeholder="try@example.com" required="">
+                                <input name="email" type="email" class="focus:outline-none px-3" placeholder="try@example.com" required="" value="{{$user->email}}">
                             </label>
                             <label class="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span class="text-right px-2">العنوان</span>
-                                <input name="address" class="focus:outline-none px-3" placeholder="10 Street XYZ 654">
+                                <input name="address" class="focus:outline-none px-3" placeholder="العنوان بالتفصيل" value="{{$user->city_id}}">
                             </label>
                             <label class="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span class="text-right px-2">المحافظة</span>
-                                <input name="city" class="focus:outline-none px-3" placeholder="San Francisco">
+                                <input name="city_id" class="focus:outline-none px-3" placeholder="ادلب" vlaue="{{$user->city_id}}">
+                            </label>
+                            <label class="flex border-b border-gray-200 h-12 py-3 items-center">
+                                <span class="text-right px-2">رقم الهاتف</span>
+                                <input name="phone" class="focus:outline-none px-3" placeholder="8523432443" value="{{$user->phone}}">
                             </label>
                             <label class="inline-flex w-2/4 border-gray-200 py-3">
                                 <span class="text-right px-2">State</span>
-                                <input name="state" class="focus:outline-none px-3" placeholder="CA">
+                                <input name="status" class="focus:outline-none px-3" placeholder="CA" value="{{$user->status}}">
                             </label>
-
+                            @foreach($cartItems as $cart)
+                            <label class="inline-flex w-2/4 border-gray-200 py-3 hidden">
+                                <span class="text-right px-2">State</span>
+                                <input class="text-gray-600 text-md font-semi-bold hidden" type="hidden" name="product_id" >{{$cart->id}}</input>
+                            </label>
+                            @endforeach
                             <label class="flex border-t border-gray-200 h-12 py-3 items-center select relative">
                                 <span class="text-right px-2">Country</span>
                                 <div id="country" class="focus:outline-none px-3 w-full flex items-center">
@@ -113,46 +131,37 @@
                             </label>
                         </fieldset>
                     </section>
-                </form>
+
             </div>
-            <div class="rounded-md">
-                <section>
-                    <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">معلومات البطاقة البنكية </h2>
-                    <fieldset class="mb-3 bg-white shadow-lg rounded text-gray-600">
-                        <label class="flex border-b border-gray-200 h-12 py-3 items-center">
-                            <span class="text-right px-2">Card</span>
-                            <input name="card" class="focus:outline-none px-3 w-full" placeholder="Card number MM/YY CVC" required="">
-                        </label>
-                    </fieldset>
-                </section>
-            </div>
+
             <button class="submit-button px-4 py-3 rounded-full bg-blue-400 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors">
                 ${{ Cart::subtotal()}}
             </button>
         </div>
         <div class="col-span-1 bg-white lg:block hidden">
-            <h1 class="py-6 border-b-2 text-xl text-gray-600 px-8">Order Summary</h1>
+            <h1 class="py-6 border-b-2 text-xl text-gray-600 px-8">تفاصيل الطلب</h1>
             <ul class="py-6 border-b space-y-6 px-8">
                 @foreach($cartItems as $cart)
                 <li class="grid grid-cols-6 gap-2 border-b-1">
-                    <div class="col-span-1 self-center">
-                        <img src="{{$cart->image}}">
-                    </div>
+
 
                     <div class="flex flex-col col-span-3 pt-2">
+                        <span class="text-gray-400 font-bold">المنتج : </span>
+                        <input class="text-gray-600 text-md font-semi-bold">{{$cart->name}}  &#x2717 {{ $cart->qty }}</input>
 
-                        <span class="text-gray-600 text-md font-semi-bold">{{$cart->name}}</span>
-                        <span class="text-gray-400 text-sm inline-block pt-2">{{$cart->description}}</span>
+
                     </div>
+
                     <div class="col-span-2 pt-3">
-                        <div class="flex items-center space-x-2 text-sm justify-between">
-                            <span class="text-gray-400">{{ $cart->qty }}</span>
-                            <span class="text-blue-400 font-semibold inline-block">${{ $cart->price }}</span>
+                        <div class=" items-center space-x-2 text-sm justify-between">
+                            <span class="text-gray-400 font-bold">السعر : </span>
+                            <input class="text-blue-400 font-semibold inline-block">${{ $cart->price }}</input>
+
                         </div>
                     </div>
                 </li>
                 @endforeach
-
+                </form>
             </ul>
 
             <div class="font-semibold text-xl px-8 flex justify-between py-8 text-gray-600">
@@ -161,6 +170,7 @@
             </div>
         </div>
     </div>
+
 
 <script src="{{asset('js/index.js')}}"></script>
 </body>

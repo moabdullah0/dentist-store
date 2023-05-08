@@ -66,7 +66,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="last">الماركة</label>
-                <select class="form-select" aria-label="Default select example" name="brand_id" id="brand_id">
+                <select class="form-select" aria-label="Default select example" name="brand_id" id="brand_id" data-value="{{$product->brand}}">
                     <option value="{{$product->brand}}">الماركة</option>
                     @forelse ($brands as $brand)
 

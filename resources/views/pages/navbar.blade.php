@@ -1,6 +1,6 @@
 <nav class="relative px-4 py-4 flex justify-between items-center bg-white " dir="rtl">
     <a class="text-3xl font-bold leading-none" href="{{url('/')}}">
-        <h1 class="font-bold navbar-brand font-bold"  width="10%"><span class=" text-blue-500" >One </span > Store</h1>
+        <h1 class="font-bold navbar-brand font-bold"  width="10%"><span class=" text-blue-500" >Smile </span > Store</h1>
 
     </a>
     <div class="lg:hidden flex">
@@ -16,7 +16,7 @@
 
     </div>
     <ul class="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-        <li><a href="{{url('cart/')}}" class="text-xl text-blue-500 font-bold w-2 list-none" ><i class="fa-solid fa-cart-shopping"></i>
+        <li><a href="{{url('cart/')}}" class="text-xl text-blue-500 font-bold  list-none" ><i class="fa-solid fa-cart-shopping"></i>
                   ({{ $cartCount}})السلة
             </a>
         </li>
@@ -29,7 +29,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
             </svg>
         </li>
-        <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">خدماتنا</a></li>
+        <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#services">خدماتنا</a></li>
         <li class="text-gray-300">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
@@ -42,6 +42,12 @@
             </svg>
         </li>
         <li><a class="text-sm text-gray-400 hover:text-gray-500" href="#">الرئيسية</a></li>
+        <li class="text-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+            </svg>
+        </li>
+        <li><a class="text-sm text-gray-400 hover:text-gray-500 hover:text-blue-500" href="/products">منتجاتنا</a></li>
 
 
     </ul>
@@ -105,13 +111,16 @@
         <div>
             <ul>
                 <li class="mb-1">
+                    <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-lime-50 hover:text-blue-400 rounded" href="#">منتجاتنا</a>
+                </li>
+                <li class="mb-1">
                     <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-lime-50 hover:text-blue-400 rounded" href="#">الرئيسية</a>
                 </li>
                 <li class="mb-1">
                     <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-lime-50 hover:text-blue-600 rounded" href="#servecies">من نحن</a>
                 </li>
                 <li class="mb-1">
-                    <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-lime-50 hover:text-blue-600 rounded" href="#">خدماتنا</a>
+                    <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-lime-50 hover:text-blue-600 rounded" href="#services">خدماتنا</a>
                 </li>
                 <li class="mb-1">
                     <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-lime-50 hover:text-blue-600 rounded" href="#">حساباتنا</a>

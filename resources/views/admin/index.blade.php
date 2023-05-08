@@ -31,6 +31,7 @@
     <link rel="stylesheet" href="{{asset('css/quill.snow.css') }}">
     <link rel="stylesheet" href="{{asset('css/index.css') }}">
 
+
     <!-- Date Range Picker CSS -->
     <link rel="stylesheet" href="{{asset('css/daterangepicker.css') }}">
     <!-- App CSS -->

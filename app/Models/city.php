@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class city extends Model
 {
     use HasFactory;
-    protected $filltable=['id','city'];
+    protected $fillable=['id','city'];
     protected $table='city';
 
     public function users()

@@ -49,7 +49,7 @@
                 <i class="ion-ios-star text-center"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star"></i><i class="ion-ios-star-outline"></i>
             </div>
             <figcaption>
-                <h1 >
+                <h1  dir="rtl">
                     {{$product->title}}
                 </h1>
                 <div class="price">
@@ -83,6 +83,7 @@
                         </button>-->
 
                     </div>
+
                     <!-- Quantity -->
 
 
@@ -91,8 +92,8 @@
             </figcaption>
           <button  class="add-to-cart addtocart" type="submit">Add to Cart</button>
             @endif
-
-
+        </figure>
+</form>
 
 
 

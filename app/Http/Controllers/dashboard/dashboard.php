@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Models\orders;
 use Illuminate\Http\Request;
 
 class dashboard extends Controller
@@ -15,7 +16,22 @@ class dashboard extends Controller
      return view('admin.index');
     }
 
+    public function showorders(){
+        $orders=orders::all();
+        return view('orders.showorders',compact('orders'));
+    }
 
+    public function sailesfilter(Request $request){
+
+
+        $month = $request->input('month');
+        $year = $request->input('year');
+        $orders = orders::whereMonth('created_at', $month) ->whereYear('created_at', $year)->get();
+
+
+
+        return view('pages.filtersail', compact('orders'));
+    }
     /**
      * Show the form for creating a new resource.
      */

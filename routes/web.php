@@ -28,7 +28,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 Route::controller(App\Http\Controllers\dashboard\dashboard::class)->middleware('auth')->group(function(){
-    Route::get('admin','index');});
+    Route::get('admin','index');
+    Route::get('admin/show-order','showorders');
+    Route::get('admin/filtersail','sailesfilter')->name('orders.sailesfilter');
+
+});
 
 require __DIR__.'/auth.php';
 Route::controller(App\Http\Controllers\category\addcategory::class)->middleware('auth')->group(function(){
@@ -38,6 +42,7 @@ Route::controller(App\Http\Controllers\category\addcategory::class)->middleware(
     Route::get('/admin/edit-category/{id}','edit');
     Route::put('/admin/update-category/{id}','update');
     Route::delete('/admin/delete-category/{id}','destroy');
+
 });
 
 Route::controller(App\Http\Controllers\product\product::class)->middleware('auth')->group(function(){
@@ -56,15 +61,40 @@ Route::group(['middleware' => ['auth']], function() {
 });
 Route::controller(App\Http\Controllers\layoutes\layoutes::class)->group(function(){
     Route::get('/','index')->name('home.index');
+
+
+    Route::get('/carts','carts')->name('carts.carts');
+
+
+
+});
+Route::controller(App\Http\Controllers\layoutes\ShowproductfromCategory::class)->group(function(){
     Route::get('/show-products/{id}','showproduct')->middleware('auth');
+
+});
+
+Route::controller(App\Http\Controllers\layoutes\Showallproduct::class)->group(function(){
+    Route::get('/products','showallproduct')->name('product.allproduct')->middleware('auth');
+
+});
+
+Route::controller(App\Http\Controllers\layoutes\CartSetting::class)->group(function(){
+
     Route::get('/product-detailes/{id}','show')->middleware('auth')->name('product-detailes.show');
     Route::get('/cart','cart')->name('cart.cart')->middleware('auth');
     Route::post('/cartshopping/{id}','store')->name('cartcartshopping.store');
     Route::delete('/cartshopping/{id}', 'destroy')->name('cart.remove');
     Route::put('/cartshopping/{id}', 'update')->name('cart.edit');
-    Route::get('/carts','carts')->name('carts.carts');
-    Route::get('/products','showallproduct')->name('product.allproduct')->middleware('auth');
-    Route::get('/checkout','checkout')->name('checkout')->middleware('auth');
-
 });
 
+Route::controller(App\Http\Controllers\layoutes\ordersettings::class)->group(function(){
+    Route::get('/checkout','checkout')->name('checkout')->middleware('auth');
+    Route::post('/checkout-save','checkoutstore')->name('checkout')->middleware('auth');
+
+
+});
+Route::controller(App\Http\Controllers\layoutes\addcityController::class)->group(function(){
+    Route::get('admin/add-city','create')->name('users.city');
+    Route::post('admin/add-city','store');
+
+});

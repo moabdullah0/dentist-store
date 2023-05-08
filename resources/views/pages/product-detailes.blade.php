@@ -79,36 +79,41 @@
                                     <form action="{{url('cartshopping/'.$product->id)}}" method="POST">
                                         @csrf
                                         @method('POST')
-                                    <div class="form-outline">
+                                    <div class="">
                                         <label class="form-label " for="form1">العدد</label>
-                                        <input type="hidden" name="product_id" value="{{$product->id}}">
-                                        <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
 
+                                        <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
+                                        <input type="hidden" name="product_id" value="{{$product->id}}">
                                     </div>
 
 
 
-                                </div>
+
                                 <!-- Quantity -->
 
 
                             </div>
 
                             <button type="submit" href="" class="btn bg-blue-300 text-black-300 hover:bg-blue-500 text-center w-56 addtocart"><i class="fa-solid fa-cart-shopping mx-2"></i>اضافة الى السلة</button>
-
+                            </div>
+                        </div>
+                    </div>
                 </form>
+
 
 
                         <!-- Single item -->
 
 
                     </div>
-                </div>
-            </div>
-        </div>
+
+
+
     </div>
+
 </section>
 
 </div>
+
 <script src="{{asset('js/index.js')}}"></script>
 </body>

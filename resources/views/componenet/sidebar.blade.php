@@ -30,7 +30,10 @@
                 <ul class="collapse list-unstyled pl-4 w-100" id="charts">
 
                     <li class="nav-item">
-                        <a class="nav-link pl-3" href="{{'/' .($page='users')}}"><span class="ml-1 item-text">عرض مستخدمين</span></a>
+                        <a class="nav-link pl-3" href="{{'/' .($page='users')}}"><span class="ml-1 item-text">عرض المستخدمين</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-3" href="{{url('/admin/add-city')}}"><span class="ml-1 item-text">اضافة مدينة </span></a>
                     </li>
                 </ul>
             </li>
@@ -52,18 +55,31 @@
 
                 </ul>
             </li>
+
+
+
+        </ul>
+
+        <p class="text-muted nav-heading mt-4 mb-1">
+            <span>الطلبات</span>
+        </p>
+        <ul class="navbar-nav flex-fill w-100 mb-2">
+
             <li class="nav-item dropdown">
-                <a href="#profile" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                    <i class="fe fe-user fe-16"></i>
-                    <span class="ml-3 item-text">اضافة صلاحية</span>
+                <a href="#contact" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
+                    <i class="fe fe-book fe-16"></i>
+                    <span class="ml-3 item-text">عرض الطلبات</span>
                 </a>
-                <ul class="collapse list-unstyled pl-4 w-100" id="profile">
-                    <a class="nav-link pl-3" href="./profile.html"><span class="ml-1">Overview</span></a>
-                    <a class="nav-link pl-3" href="./profile-settings.html"><span class="ml-1">Settings</span></a>
-                    <a class="nav-link pl-3" href="./profile-security.html"><span class="ml-1">Security</span></a>
-                    <a class="nav-link pl-3" href="./profile-notification.html"><span class="ml-1">Notifications</span></a>
+                <ul class="collapse list-unstyled pl-4 w-100" id="contact">
+                    <a class="nav-link pl-3" href="{{url('admin/show-order')}}"><span class="ml-1">جميع الطلبات</span></a>
+
+                </ul>
+                <ul class="collapse list-unstyled pl-4 w-100" id="contact">
+                    <a class="nav-link pl-3" href="{{url('admin/filtersail')}}"><span class="ml-1">  الطلبات حسب مبيعات كل شهر</span></a>
+
                 </ul>
             </li>
+
 
 
         </ul>

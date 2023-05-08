@@ -50,7 +50,7 @@
 
                                     <img src="{{$cart->image}}">
                                     <div class="flex flex-col ml-3">
-                                        <span class="md:text-md font-medium">{{$cart->name}}</span>
+                                        <span class="md:text-md font-medium" dir="rtl">{{$cart->name}}</span>
                                         <span class="text-xs font-light text-gray-400">{{$cart->description}}</span>
 
                                     </div>

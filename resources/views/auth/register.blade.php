@@ -88,10 +88,39 @@
                         <form role="form" method="POST" action="{{ route('register') }}">
                             @csrf
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Name" aria-label="Name" name="name" :value="old('name')" required autofocus autocomplete="name">
+                                <input type="text" class="form-control" placeholder="Name" aria-label="Name" name="name" required autofocus autocomplete="name">
                             </div>
                             <div class="mb-3">
-                                <input type="email" class="form-control" placeholder="Email" aria-label="Email" name="email" :value="old('email')" required autocomplete="username">
+                                <input type="email" class="form-control" placeholder="Email" aria-label="Email" name="email"  required autocomplete="username">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="phone" aria-label="Name" name="phone" required autofocus autocomplete="name">
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="last">المدينة</label>
+                                   <select class="form-select" aria-label="Default select example" name="city_id" id="city_id">
+                                        <option value="">المدينة</option>
+                                        @forelse ( $cities as $city)
+
+                                            <option value="{{$city->id}}">{{$city->city}}</option>
+                                        @empty
+                                            <tr>
+                                                <td>No REcord Found</td>
+                                            </tr>
+                                        @endforelse
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="last">نوع التسجيل</label>
+                                    <select class="form-select" aria-label="Default select example" name="roles" id="roles">
+                                        <option value="5">طالب</option>
+                                        <option value="6">شركة</option>
+
+                                    </select>
+                                </div>
                             </div>
                             <div class="mb-3">
                                 <input type="password" class="form-control" placeholder="Password" aria-label="Password"  name="password"
@@ -108,6 +137,8 @@
                                     I agree the <a href="javascript:;" class="text-dark font-weight-bolder">Terms and Conditions</a>
                                 </label>
                             </div>
+
+
                             <div class="flex items-center justify-end mt-4">
                                 <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">
                                     {{ __('Already registered?') }}

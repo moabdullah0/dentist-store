@@ -1,6 +1,6 @@
 <!-- Footer -->
 <footer
-    class="text-center text-lg-start text-dark mt-5"
+    class="text-center text-lg-start text-dark "
     style="background-color: #ECEFF1"
     dir=""
 >

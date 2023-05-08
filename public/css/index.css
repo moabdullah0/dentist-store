@@ -19,6 +19,11 @@
   width: 0%;
   transition: 0.7s;
 }*/
+*{
+    font-family: 'IBM Plex Sans Arabic', sans-serif;
+    font-family: 'Noto Kufi Arabic', sans-serif;
+
+}
 .card:hover::before {
   width: 100%;
   border-radius: 5px;
@@ -210,4 +215,53 @@ figure.snip1195.hover .add-to-cart {
 
 .landing{
     height: 100vh;
+}
+.home {
+    height: 80vh;
+    width: 95%;
+    margin-top: 20px;
+    margin-left: 40px;
+    background: rgba(0, 128, 255, 0.4);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+}
+
+@media(max-width:550px){
+    .home{
+        height: 140vh;
+        width:90%;
+        height:70vh;
+
+    }
+    .img1{
+        position: absolute;
+        width: 80%;
+
+
+    }
+    .card1{
+        width: 80%;
+    }
+    .card2 {
+        margin-left: 10%;
+    }
+    .card11{
+        margin-left: 10%;
+    }
+    .card3{
+        margin-left: 10%;
+    }
+    .skills{
+        height: 160vh;
+    }
+    .img2{
+        display: none;
+    }}
+
+.cardsection{
+
 }

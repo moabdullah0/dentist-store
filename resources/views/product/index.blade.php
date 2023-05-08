@@ -3,10 +3,10 @@
 
     <div class="row">
         @foreach ($product as $product)
-            <div class=" col-lg-6 grid grid-cols-4  w-50">
+            <div class=" col-lg-4 grid grid-cols-4  w-50">
                 <div class="card w-96 bg-base-100 shadow-xl">
 
-                    <img src="{{ asset('upload/' . $product->image) }}" width="100%" height="50%" alt="">
+                    <img src="{{ asset('upload/' . $product->image) }}" width="100%" height="50%" alt="" class="img-fluid">
 
                     <div class="card-body items-center text-center">
                         <h2 class="card-title"><span>{{$product->title}}</span></h2>
