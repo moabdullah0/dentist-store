@@ -36,8 +36,19 @@
 
         <div class="col-md-6">
             <div class="form-group">
-                <label for="last">الخصم</label>
-                <input type="text" class="form-control" placeholder="" id="last" name="discount">
+                <label for="last" class="font-weight-bold ">الحسم</label>
+<br>
+                    @forelse ($discount as $discount)
+                        <label for="last">حسم الشركات</label>
+                        <input type="text" id="checkbox" name="discount_company" checked value="{{$discount->company_discount}}">
+                    <label for="last">حسم الطلاب</label>
+                    <input type="text" id="checkbox" name="discount_student" checked value="{{$discount->student_discount}}">
+                    @empty
+                        <tr>
+                            <td>No REcord Found</td>
+                        </tr>
+                    @endforelse
+
             </div>
         </div>
         <!--  col-md-6   -->

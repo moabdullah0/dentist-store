@@ -93,8 +93,12 @@
 
 
                             </div>
-
+@if($product->numofpeace<=3)
+    <h1 class="font-weight-bold text-red-400">لم تعد الكمية متوفرة</h1>
+                                @else
                             <button type="submit" href="" class="btn bg-blue-300 text-black-300 hover:bg-blue-500 text-center w-56 addtocart"><i class="fa-solid fa-cart-shopping mx-2"></i>اضافة الى السلة</button>
+                                @endif
+
                             </div>
                         </div>
                     </div>

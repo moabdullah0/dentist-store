@@ -135,7 +135,7 @@
             </div>
 
             <button class="submit-button px-4 py-3 rounded-full bg-blue-400 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors">
-                ${{ Cart::subtotal()}}
+               اتمام العملية
             </button>
         </div>
         <div class="col-span-1 bg-white lg:block hidden">
@@ -159,14 +159,23 @@
 
                         </div>
                     </div>
+
+
                 </li>
                 @endforeach
                 </form>
             </ul>
 
             <div class="font-semibold text-xl px-8 flex justify-between py-8 text-gray-600">
-                <span>Total</span>
+                <span>السعر قبل الحسم</span>
                 <span>${{ Cart::subtotal()}}</span>
+            </div>
+            <div class="font-semibold text-xl px-8 flex justify-between py-8 text-gray-600">
+                <span>السعر بعد الخصم</span>
+@foreach($discount as $discount)  <span>${{ Cart::subtotal()-$discount->company_discount}}</span>
+
+@endforeach
+
             </div>
         </div>
     </div>

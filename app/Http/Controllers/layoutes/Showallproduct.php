@@ -6,14 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Models\Products;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Showallproduct extends Controller
 {
     public function showallproduct(){
+        $user=Auth::user();
         $products=Products::all();
         $cart=Cart::content();
         $cartCount = Cart::content()->count();
-        return view('pages.allproduct',compact('products','cartCount','cart'));
+        return view('pages.allproduct',compact('products','cartCount','cart','user'));
 
     }
 }

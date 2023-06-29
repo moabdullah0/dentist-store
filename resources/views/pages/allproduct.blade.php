@@ -92,7 +92,11 @@
                     </div>
                     <a href="{{url('/product-detailes/'.$product->id)}}" class="bg-blue-200 btn hover:bg-gray-50 w-32 h-2">عرض التفاصيل</a>
                 </figcaption>
-                <button  class="add-to-cart addtocart" type="submit">Add to Cart</button>
+                @if($product->numofpeace<=3)
+                    <h1 class="add-to-cart addtocart">لم تعد الكمية متوفرة</h1>
+                @else
+                    <button  class="add-to-cart addtocart" type="submit">Add to Cart</button>
+                @endif
                 @endif
             </figure>
             </form>

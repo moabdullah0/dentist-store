@@ -48,7 +48,13 @@
             </svg>
         </li>
         <li><a class="text-sm text-gray-400 hover:text-gray-500 hover:text-blue-500" href="/products">منتجاتنا</a></li>
-
+        <li class="text-gray-300">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+            </svg>
+        </li>
+        <li><a class="text-sm text-gray-400 hover:text-gray-500 hover:text-blue-500" href={{url('order-user/'.$user->id)}}>طلباتي</a>
+        </li>
 
     </ul>
 
@@ -67,23 +73,39 @@
             </x-slot>
 
             <x-slot name="content">
-                <x-dropdown-link :href="route('profile.edit')">
-                    {{ __('Profile') }}
-                </x-dropdown-link>
-
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-
-                    <x-dropdown-link :href="route('logout')"
-                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                        {{ __('Log Out') }}
+                @auth
+                    <x-dropdown-link :href="route('profile.edit')">
+                        {{ __('Profile') }}
                     </x-dropdown-link>
-                </form>
+
+                    <!-- Authentication -->
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-dropdown-link :href="route('logout')"
+                                         onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                            {{ __('Log Out') }}
+                        </x-dropdown-link>
+                    </form>
+
+                @else
+                    <form method="GET" action="{{ route('login') }}">
+                        @csrf
+
+                        <x-dropdown-link :href="route('login')"
+                                         onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                            {{ __('Log In') }}
+                        </x-dropdown-link>
+                    </form>
+                @endauth
             </x-slot>
+
         </x-dropdown>
+
     </div>
+
     @if (isset($header))
         <header class="bg-white dark:bg-gray-800 shadow">
             <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
@@ -125,14 +147,16 @@
                 <li class="mb-1">
                     <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-lime-50 hover:text-blue-600 rounded" href="#">حساباتنا</a>
                 </li>
-                <li class="list-none"><a href="{{url('cart/')}}" class="text-xl text-blue-500 font-bold w-2 mx-3 list-none" href="#servecies"><i class="fa-solid fa-cart-shopping list-none"></i>
+                <li class="">
+                <li><a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-lime-50 hover:text-blue-600 rounded" href={{url('order-user/'.$user->id)}}>طلباتي</a></li>
+                </li>
+
+                <li class="list-none mt-2"><a href="{{url('cart/')}}" class="text-xl text-blue-500 font-bold w-2 mx-3 list-none" href="#servecies"><i class="fa-solid fa-cart-shopping list-none"></i>
                         ({{ $cartCount}})السلة
                     </a>
 
                 </li>
-                <li class="mb-1">
-                    <a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-lime-50 hover:text-blue-600 rounded" href="#">المزيد</a>
-                </li>
+
 
             </ul>
         </div>

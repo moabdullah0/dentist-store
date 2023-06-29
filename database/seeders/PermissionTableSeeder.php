@@ -18,7 +18,6 @@ class PermissionTableSeeder extends Seeder
             'التعديل على المنتجات',
             'التعديل على الاقسام',
 
-
         ];
 
         foreach ($permissions as $permission) {

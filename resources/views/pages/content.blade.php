@@ -1,16 +1,30 @@
 <!--Landing-->
 <div class="home mt-32" id="home" dir="rtl">
     <div class="container">
-
+        @auth
         <div class="row d-flex items-center">
             <div class="col-6 mt-32 ">
-                <h1 class="mb-3 font-weight-bold"><span class="font-bold text-xl">{{$user->name}}</span> اهلاً بك</h1>
-                <h2>هذا الموقع يساعدك على الوصول الى جميع ادوات التي تخص عبادة طب الاسنان من معدات واجهزة تخص العيادة والطالب الجامعي</h2>
+
+                    <p class="font-weight-bold">اهلاً بك, {{ Auth::user()->name }}</p>
+                    <h2 class="text-xl">هذا الموقع يساعدك على الوصول الى جميع ادوات التي تخص عيادة طب الاسنان من معدات واجهزة تخص العيادة والطالب الجامعي</h2>
                     <a href="/products" class="btn btn bg-blue-500 mt-5 rounded-pill">ابدا التسوق من هنا</a>
             </div>
             <div class="col-6 colmeimg  ">
                 <img src="images/dental-implants-surgery-concept-pen-tool-created-clipping-path-included-jpeg-easy-composite-removebg-preview.png" alt="" class="img-fluid img1  ">
             </div>
+                @else
+                <div class="row d-flex items-center">
+                    <div class="col-6 mt-32 ">
+
+                <h1 class="mb-3 font-weight-bold text-2xl"> اهلاً بك</h1>
+                <h2 class="text-xl">هذا الموقع يساعدك على الوصول الى جميع ادوات التي تخص عيادة طب الاسنان من معدات واجهزة تخص العيادة والطالب الجامعي</h2>
+                    <a href="/products" class="btn btn bg-blue-500 mt-5 rounded-pill">ابدا التسوق من هنا</a>
+            </div>
+
+            <div class="col-6 colmeimg  ">
+                <img src="images/dental-implants-surgery-concept-pen-tool-created-clipping-path-included-jpeg-easy-composite-removebg-preview.png" alt="" class="img-fluid img1  ">
+            </div>
+            @endauth
         </div>
 
     </div>
@@ -18,7 +32,7 @@
 
 
 
-<!--الاقسام-->
+
 <!--الاقسام-->
 
 

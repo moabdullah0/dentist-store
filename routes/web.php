@@ -31,6 +31,7 @@ Route::controller(App\Http\Controllers\dashboard\dashboard::class)->middleware('
     Route::get('admin','index');
     Route::get('admin/show-order','showorders');
     Route::get('admin/filtersail','sailesfilter')->name('orders.sailesfilter');
+    Route::get('admin/orders/{id}','show');
 
 });
 
@@ -62,7 +63,6 @@ Route::group(['middleware' => ['auth']], function() {
 Route::controller(App\Http\Controllers\layoutes\layoutes::class)->group(function(){
     Route::get('/','index')->name('home.index');
 
-
     Route::get('/carts','carts')->name('carts.carts');
 
 
@@ -89,12 +89,20 @@ Route::controller(App\Http\Controllers\layoutes\CartSetting::class)->group(funct
 
 Route::controller(App\Http\Controllers\layoutes\ordersettings::class)->group(function(){
     Route::get('/checkout','checkout')->name('checkout')->middleware('auth');
+    Route::get('/thankyou','thank')->name('thank')->middleware('auth');
     Route::post('/checkout-save','checkoutstore')->name('checkout')->middleware('auth');
-
+Route::get('/order-detailes/{id}','show');
+Route::get('order-user/{id}','show_order_user');
 
 });
 Route::controller(App\Http\Controllers\layoutes\addcityController::class)->group(function(){
     Route::get('admin/add-city','create')->name('users.city');
     Route::post('admin/add-city','store');
 
+});
+
+Route::controller(App\Http\Controllers\DiscountController::class)->group(function(){
+    Route::get('admin/show-discount','index');
+    Route::get('admin/add-discount','create');
+    Route::post('admin/add-discount','store');
 });

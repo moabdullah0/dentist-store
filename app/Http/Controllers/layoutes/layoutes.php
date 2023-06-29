@@ -11,7 +11,7 @@ use App\Models\User;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Session;
-use Carbon\Carbon;
+
 class layoutes extends Controller
 {
     /**
@@ -25,45 +25,6 @@ class layoutes extends Controller
         return view('layoutes.layoutes',compact('category','cartCount','user'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
 
-
-
-
-
-    /**
-     * Store a newly created resource in storage.
-     */
-
-public function checkout(){
-
-    $user = auth()->user();
-$city=city::all();
-    $cartCount = Cart::content()->count();
-    Cart::instance('default')->restore(auth()->user()->getAuthIdentifier());
-    $cartItems = Cart::instance('default')->content();
-        return view('pages.checkout' , compact('cartItems','cartCount','user'));
-}
-
-
-
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
 
 }

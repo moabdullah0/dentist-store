@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\product\product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Gloudemans\Shoppingcart\Contracts\Buyable;
@@ -28,7 +29,9 @@ class Products extends Model implements Buyable
     public function brands(){
         return $this->belongsTo(brands::class);
     }
-
+    public function discount(){
+        return $this->hasMany(discount::class);
+    }
 
     public function getBuyableIdentifier($options = null)
     {

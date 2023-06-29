@@ -12,7 +12,8 @@
                         <h2 class="card-title"><span>{{$product->title}}</span></h2>
                         <p><span>{{$product->description}}</span></p>
                         <h3>السعر :<span class="text-green-600">{{$product->price}}</span></h3>
-                        <h3>الخصم :<span class="text-danger">{{$product->discount}}</span></h3>
+                        <h3>الخصم الطلاب :<span class="text-danger">{{$product->discount_student}}</span></h3>
+                        <h3>الخصم الشركات :<span class="text-danger">{{$product->discount_company}}</span></h3>
                         <h3>حالة التوفر :<span class="text-black-50">{{$product->status}}</span></h3>
                         <h3>الكمية :<span class="text-black-50">{{$product->numofpeace}}</span></h3>
 

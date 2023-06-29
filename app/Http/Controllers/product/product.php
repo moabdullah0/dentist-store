@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\product;
 use App\Http\Requests\productsRequest;
+use App\Models\discount;
 use Illuminate\Http\UploadedFile;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductRequest;
@@ -29,7 +30,8 @@ class product extends Controller
         $product=Products::all();
         $brands=brands::all();
         $category=Category::all();
-        return view('product.add',compact('brands','category','product'));
+        $discount=discount::all();
+        return view('product.add',compact('brands','category','product','discount'));
 
     }
 
@@ -48,6 +50,8 @@ class product extends Controller
         $product->category_id=$request->input('category_id');
         $product->numofpeace=$request->input('numofpeace');
         $product->status=$request->input('status');
+        $product->discount_company=$request->input('discount_company');
+        $product->discount_student=$request->input('discount_student');
 
         // handle image upload
         if ($request->hasfile('image')) {
