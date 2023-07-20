@@ -79,8 +79,9 @@ Route::controller(App\Http\Controllers\layoutes\Showallproduct::class)->group(fu
 
 });
 Route::controller(App\Http\Controllers\WishlistController::class)->group(function(){
+    Route::get('/whislist/show', 'show');
     Route::post('/wishlist/add/{product}', 'add')->name('wishlist.add');
-    Route::delete('/wishlist/remove/{product}', 'removeFromWishlist')->name('wishlist.remove');
+    Route::delete('/wishlist/remove/{productId}', 'removeProductFromWishlist')->name('wishlist.remove');
 
 
 

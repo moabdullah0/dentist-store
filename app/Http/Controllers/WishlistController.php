@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Products;
+use App\Models\User;
 use App\Models\Wishlist;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -29,15 +31,50 @@ class WishlistController extends Controller
 
 
 
-    public function removeFromWishlist(Product $product)
+    public function show()
     {
-        // Retrieve the authenticated user
+        // Check if the user is authenticated
+        if (Auth::check()) {
+            // Get the authenticated user ID
+            $userId = auth()->user()->id;
+
+            // Get the wishlist items for the authenticated user
+            $wishlistItems = Wishlist::where('user_id', $userId)->get();
+        } else {
+            // User is not authenticated, set wishlistItems to an empty array
+            $wishlistItems = [];
+        }
+
+        // Get all users
+        $users = User::all();
         $user = Auth::user();
+        $cartCount = Cart::content()->count();
+        Cart::instance('default')->restore(auth()->user()->getAuthIdentifier());
+        $cartItems = Cart::instance('default')->content();
 
-        // Remove the product from the user's wishlist
-        $user->wishlist()->detach($product);
+        return view('pages.wishlistpages', compact('users', 'wishlistItems', 'cartItems', 'cartCount', 'user'));
+    }
 
-        return redirect()->route('wishlist.show')->with('success', 'Product removed from wishlist.');
+
+
+
+    public function removeProductFromWishlist(Request $request, $productId)
+    {
+        $user = auth()->user();
+
+        // Find the wishlist item by the product ID and user ID
+        $wishlistItem = Wishlist::where('user_id', $user->id)
+            ->where('product_id', $productId)
+            ->first();
+
+        if (!$wishlistItem) {
+            return redirect()->back()->with('error', 'Product not found in the wishlist.');
+        }
+
+        // Delete the wishlist item
+        $wishlistItem->delete();
+
+        return redirect()->back()->with('success', 'Product removed from the wishlist successfully.');
     }
 
 

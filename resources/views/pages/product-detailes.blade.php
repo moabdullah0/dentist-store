@@ -106,12 +106,13 @@
                         </div>
                     </div>
                 </form>
-                    <form action="{{ route('wishlist.add', ['product' => $product]) }}" method="POST" class="position-absolute left-96 top-96">
+                    <form action="{{ route('wishlist.add', ['product' => $product]) }}" method="POST" class="position-absolute left-96 top-96 d-flex">
                         @csrf
-                        <button type="submit" class="btn btn-danger btn-sm mb-2 text-danger w-56 text-center" data-mdb-toggle="tooltip"
+                        <button type="submit" class=" hover:bg-red-200 bg-red-300 btn-sm mb-2 text-danger w-56 text-center rounded-pill" data-mdb-toggle="tooltip"
                                 title="Move to the wish list"> اضافة الى المفضلة</button>
+                        <a href="/whislist/show" class="hover:bg-blue-400 bg-blue-500 btn-sm mb-2 text-white rounded-pill w-56 text-center position-absolute left-80 top-90">عرض المنتجات المفضلة لدي
                     </form>
-
+ </a>
                     </div>
 
     </div>
