@@ -34,6 +34,13 @@
                 {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
             </div>
         </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>رقم الهاتف:</strong>
+                {!! Form::text('phone', null, array('placeholder' => 'phone','class' => 'form-control')) !!}
+            </div>
+        </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Password:</strong>
@@ -49,7 +56,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Role:</strong>
-                {!! Form::select('roles_name[]', $roles,[], array('class' => 'form-control','multiple')) !!}
+                {!! Form::select('roles[]', $roles,[], array('class' => 'form-control','multiple')) !!}
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">

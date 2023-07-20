@@ -1,4 +1,5 @@
-<section>
+
+<section >
     <header>
         <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
             {{ __('Profile Information') }}
@@ -19,13 +20,34 @@
 
         <div>
             <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full" :value="old('name', $user->name)" required autofocus autocomplete="name" />
+            <x-text-input id="name" name="name" type="text" class="mt-1 block w-full border-solid bg-blue-100 rounded-pill text-center" :value="old('name', $user->name)" required autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        </div>
+        <div>
+            <x-input-label for="name" :value="__('Phone')" />
+            <x-text-input id="name" name="phone" type="text" class="mt-1 block w-full border-solid bg-blue-100 rounded-pill text-center" :value="old('phone', $user->phone)" required autofocus autocomplete="name" />
+            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
+        </div>
+        <div>
+            <label for="last">City</label>
+            <br>
+            <select class="form-select rounded-pill  w-32 border-solid bg-blue-100 rounded-pill text-center hover:bg-gray-50" aria-label="Default select example" name="city_id" id="brand_id">
+                <option value="{{old('city_id',$user->city_id)}}" >المدينة</option>
+                @forelse ($city as $city)
+
+                    <option value="{{$city->id}}" class="bg-white">{{$city->city}}</option>
+                @empty
+                    <tr>
+                        <td>No REcord Found</td>
+                    </tr>
+                @endforelse
+            </select>
+            </label>
         </div>
 
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
+            <x-text-input id="email" name="email" type="email" class="mt-1 block w-full border-solid bg-blue-100 rounded-pill" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())

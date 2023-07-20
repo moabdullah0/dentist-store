@@ -53,7 +53,13 @@
                     {{$product->title}}
                 </h1>
                 <div class="price">
-                    <s>%{{$product->discount}}</s>${{$product->price}}
+                   @can('اعدادت الشركة')
+                    <s>%{{$product->discount_company}}
+                        @endcan
+                        @can('اعدادت الطالب')
+                        <s>%{{$product->discount_student}}
+                            @endcan
+                    </s>${{$product->price}}
                     <br>
 
 

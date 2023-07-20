@@ -31,7 +31,7 @@ Route::controller(App\Http\Controllers\dashboard\dashboard::class)->middleware('
     Route::get('admin','index');
     Route::get('admin/show-order','showorders');
     Route::get('admin/filtersail','sailesfilter')->name('orders.sailesfilter');
-    Route::get('admin/orders/{id}','show');
+    Route::get('admin/orders/{userId}','show')->name('orders.show');
 
 });
 
@@ -75,9 +75,16 @@ Route::controller(App\Http\Controllers\layoutes\ShowproductfromCategory::class)-
 
 Route::controller(App\Http\Controllers\layoutes\Showallproduct::class)->group(function(){
     Route::get('/products','showallproduct')->name('product.allproduct')->middleware('auth');
+    Route::get('/products/search', 'search')->name('products.search');
 
 });
+Route::controller(App\Http\Controllers\WishlistController::class)->group(function(){
+    Route::post('/wishlist/add/{product}', 'add')->name('wishlist.add');
+    Route::delete('/wishlist/remove/{product}', 'removeFromWishlist')->name('wishlist.remove');
 
+
+
+});
 Route::controller(App\Http\Controllers\layoutes\CartSetting::class)->group(function(){
 
     Route::get('/product-detailes/{id}','show')->middleware('auth')->name('product-detailes.show');

@@ -58,16 +58,22 @@
                                 <p class="mb-2 mt-2 ">
                                     <strong>السعر : ${{$product->price}}</strong>
                                     <br>
-                                    <strong class="text-red-700"> الخصم : ${{$product->discount}}</strong>
+                                    @can('اعدادت الطالب')
+                                    <strong class="text-red-700"> حسم الطلاب : ${{$product->discount_student}}</strong>
+                                    @endcan
+                                    @can('اعدادت الشركة')
+                                    <strong class="text-red-700"> حسم العيادات : ${{$product->discount_company}}</strong>
+                                    @endcan
                                 </p>
                                 <!-- Price -->
                                 <button type="button" class="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip"
                                         title="Remove item">
                                     <i class="fas fa-trash  text-blue-300"></i>
                                 </button>
-                                <button type="button" class="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip"
-                                        title="Move to the wish list">
-                                    <i class="fas fa-heart text-red-300"></i>
+
+
+
+
                                 </button>
                                 <!-- Data -->
                             </div>
@@ -84,13 +90,10 @@
 
                                         <input id="form1" min="0" name="quantity" value="1" type="number" class="form-control" />
                                         <input type="hidden" name="product_id" value="{{$product->id}}">
+
                                     </div>
 
-
-
-
                                 <!-- Quantity -->
-
 
                             </div>
 @if($product->numofpeace<=3)
@@ -103,20 +106,18 @@
                         </div>
                     </div>
                 </form>
-
-
-
-                        <!-- Single item -->
-
+                    <form action="{{ route('wishlist.add', ['product' => $product]) }}" method="POST" class="position-absolute left-96 top-96">
+                        @csrf
+                        <button type="submit" class="btn btn-danger btn-sm mb-2 text-danger w-56 text-center" data-mdb-toggle="tooltip"
+                                title="Move to the wish list"> اضافة الى المفضلة</button>
+                    </form>
 
                     </div>
 
-
-
     </div>
 
-</section>
 
+<section>
 </div>
 
 <script src="{{asset('js/index.js')}}"></script>

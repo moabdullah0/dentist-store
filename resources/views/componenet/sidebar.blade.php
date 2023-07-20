@@ -1,3 +1,4 @@
+
 <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar >
     <a href="#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
         <i class="fe fe-x"><span class="sr-only"></span></i>
@@ -5,7 +6,7 @@
     <nav class="vertnav navbar navbar-light">
         <!-- nav bar -->
         <div class="w-100 mb-4 d-flex">
-            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./index.html">
+            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="./admin">
                 <svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
                 <g>
                     <polygon class="st0" points="78,105 15,105 24,87 87,87 	" />
@@ -39,7 +40,7 @@
             </li>
         </ul>
         @endcan
-
+        @can('اعدادات  المستخدمين')
         <p class="text-muted nav-heading mt-4 mb-1">
             <span>الصلاحيات</span>
         </p>
@@ -59,10 +60,11 @@
 
 
         </ul>
-
+@endcan
         <p class="text-muted nav-heading mt-4 mb-1">
             <span>الطلبات</span>
         </p>
+        @can('قسم الطلبات')
         <ul class="navbar-nav flex-fill w-100 mb-2">
 
             <li class="nav-item dropdown">
@@ -83,6 +85,7 @@
 
 
         </ul>
+        @endcan
         @can('التعديل على المنتجات')
         <p class="text-muted nav-heading mt-4 mb-1">
             <span>المنتجات</span>
@@ -99,6 +102,8 @@
                             <span class="ml-1 item-text">اضافة قسم</span>
                         </a>
                     </li>
+
+
                     <li class="nav-item">
                         <a class="nav-link pl-3" href="{{url('/admin/show-category')}}">
                             <span class="ml-1 item-text">عرض الاقسام</span>
@@ -127,7 +132,7 @@
                 <ul class="collapse list-unstyled pl-4 w-100" id="auth">
                     <a class="nav-link pl-3" href="{{url('/admin/add-product')}}"><span class="ml-1">اضافة منتجات</span></a>
                     <a class="nav-link pl-3" href="{{url('/admin/show-product')}}"><span class="ml-1">عرض المنتجات جميعها</span></a>
-
+                    <a class="nav-link pl-3" href="{{url('/admin/show-product')}}"><span class="ml-1">عرض المنتجات جميعها</span></a>
                 </ul>
             </li>
             @endcan

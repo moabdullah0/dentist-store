@@ -18,4 +18,20 @@ class Showallproduct extends Controller
         return view('pages.allproduct',compact('products','cartCount','cart','user'));
 
     }
+    public function search(Request $request)
+    {
+        $searchTerm = $request->input('search');
+        $user=Auth::user();
+        $cart=Cart::content();
+        $cartCount = Cart::content()->count();
+        // Perform the search query
+        $products = Products::where('title', 'LIKE', "%{$searchTerm}%")->get();
+
+        return view('pages.search', compact('products', 'searchTerm','cartCount','cart','user'));
+    }
+
+
+
+
+
 }

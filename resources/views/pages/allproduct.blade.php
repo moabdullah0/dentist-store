@@ -32,8 +32,11 @@
 <!--Landing-->
 
 
-<section class="bg-gray-50 container mt-32" dir="">
-
+<section class="bg-gray-50 container mt-32  " dir="">
+    <form action="{{ route('products.search') }}" method="GET" class=" d-flex justify-center">
+        <input type="text" name="search" placeholder="Search products" class="rounded-pill border-solid border-3">
+        <button type="submit" class="mx-2 bg-blue-300 rounded-pill">Search</button>
+    </form>
     <div class="row ">
         @if(session('message'))
             <div>{{session('message')}}</div>
@@ -41,7 +44,7 @@
         @foreach ($products as $product)
 
 
-            <figure class="snip1195 h-56">
+            <figure class="snip1195 h-60">
 
                 <div class="image">
 
@@ -90,7 +93,9 @@
 
 
                     </div>
-                    <a href="{{url('/product-detailes/'.$product->id)}}" class="bg-blue-200 btn hover:bg-gray-50 w-32 h-2">عرض التفاصيل</a>
+
+
+                    <a href="{{url('/product-detailes/'.$product->id)}}" class="bg-blue-200 btn hover:bg-gray-50 w-56  position-relative right-8 ">عرض التفاصيل</a>
                 </figcaption>
                 @if($product->numofpeace<=3)
                     <h1 class="add-to-cart addtocart">لم تعد الكمية متوفرة</h1>
@@ -110,6 +115,7 @@
     </div>
     </div>
 </section>
+
 
 <script src="{{asset('js/bootstrap.bundle.min.js')}}"></script>
 <script defer src="{{asset('js/index.js')}}"></script>

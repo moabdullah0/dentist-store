@@ -52,6 +52,7 @@
 
     <button type="submit" class="btn btn-primary">Filter</button>
 </form>
+    <h2 class="mt-3">قيمة اجمالي مبيعات هذا الشهر: {{ $totalSales }}$</h2>
 <div class="mt-5 ">
     <table class="table">
         <thead>
@@ -77,8 +78,10 @@
                 <td>{{$order->total_price}}</td>
         </tr>
         @endforeach
+
         </tbody>
     </table>
+
 </div>
 </div>
 @endsection

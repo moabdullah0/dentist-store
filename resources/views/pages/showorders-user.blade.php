@@ -35,6 +35,9 @@
             <th scope="col" class="px-6 py-3">
                 حالة الطلب
             </th>
+            <th scope="col" class="px-6 py-3">
+                تاريخ الطلب
+            </th>
         </tr>
         </thead>
         <tbody>
@@ -54,6 +57,9 @@
             </td>
             <td class="px-6 py-4">
                {{$order['status']}}
+            </td>
+            <td class="px-6 py-4">
+                {{$order['created_at']}}
             </td>
         </tr>
         @endforeach

@@ -1,3 +1,4 @@
+@can('اعدادات  المستخدمين')
 @extends('admin.index')
 @section('content')
     <div class="row">
@@ -32,7 +33,7 @@
                 <td>
                     @if(!empty($user->getRoleNames()))
                         @foreach($user->getRoleNames() as $v)
-                            <span class="badge rounded-pill bg-dark">{{ $v }}</span>
+                            <span class="badge rounded-pill bg-danger text-light">{{ $v }}</span>
                         @endforeach
                     @endif
                 </td>
@@ -50,3 +51,4 @@
     {!! $data->render() !!}
     <p class="text-center text-primary"><small>Tutorial by LaravelTuts.com</small></p>
 @endsection
+@endcan

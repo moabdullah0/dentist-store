@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.0/dist/full.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="">
     <title>My Store</title>
@@ -77,13 +77,25 @@
                                 <span class="text-right px-2">الايميل</span>
                                 <input name="email" type="email" class="focus:outline-none px-3" placeholder="try@example.com" required="" value="{{$user->email}}">
                             </label>
+
                             <label class="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span class="text-right px-2">العنوان</span>
-                                <input name="address" class="focus:outline-none px-3" placeholder="العنوان بالتفصيل" value="{{$user->city_id}}">
+                                <label for="last">المدينة</label>
+                                <select class="form-select" aria-label="Default select example" name="city_id" id="brand_id">
+                                    <option value="">المدينة</option>
+                                    @forelse ($city as $city)
+
+                                        <option value="{{$city->id}}">{{$city->city}}</option>
+                                    @empty
+                                        <tr>
+                                            <td>No REcord Found</td>
+                                        </tr>
+                                    @endforelse
+                                </select>
                             </label>
                             <label class="flex border-b border-gray-200 h-12 py-3 items-center">
-                                <span class="text-right px-2">المحافظة</span>
-                                <input name="city_id" class="focus:outline-none px-3" placeholder="ادلب" vlaue="{{$user->city_id}}">
+                                <span class="text-right px-2">العنوان بالتفصيل</span>
+                                <input name="address" type="text" class="focus:outline-none px-3" placeholder="جانب دوار القلعة" required="" value="">
                             </label>
                             <label class="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span class="text-right px-2">رقم الهاتف</span>
@@ -99,36 +111,7 @@
                                 <input class="text-gray-600 text-md font-semi-bold hidden" type="hidden" name="product_id" >{{$cart->id}}</input>
                             </label>
                             @endforeach
-                            <label class="flex border-t border-gray-200 h-12 py-3 items-center select relative">
-                                <span class="text-right px-2">Country</span>
-                                <div id="country" class="focus:outline-none px-3 w-full flex items-center">
-                                    <select name="country" class="border-none bg-transparent flex-1 cursor-pointer appearance-none focus:outline-none">
-                                        <option value="AU">Australia</option>
-                                        <option value="BE">Belgium</option>
-                                        <option value="BR">Brazil</option>
-                                        <option value="CA">Canada</option>
-                                        <option value="CN">China</option>
-                                        <option value="DK">Denmark</option>
-                                        <option value="FI">Finland</option>
-                                        <option value="FR">France</option>
-                                        <option value="DE">Germany</option>
-                                        <option value="HK">Hong Kong</option>
-                                        <option value="IE">Ireland</option>
-                                        <option value="IT">Italy</option>
-                                        <option value="JP">Japan</option>
-                                        <option value="LU">Luxembourg</option>
-                                        <option value="MX">Mexico</option>
-                                        <option value="NL">Netherlands</option>
-                                        <option value="PL">Poland</option>
-                                        <option value="PT">Portugal</option>
-                                        <option value="SG">Singapore</option>
-                                        <option value="ES">Spain</option>
-                                        <option value="TN">Tunisia</option>
-                                        <option value="GB">United Kingdom</option>
-                                        <option value="US" selected="selected">United States</option>
-                                    </select>
-                                </div>
-                            </label>
+
                         </fieldset>
                     </section>
 
@@ -165,18 +148,35 @@
                 @endforeach
                 </form>
             </ul>
-
+            @can('اعدادات الشركة')
             <div class="font-semibold text-xl px-8 flex justify-between py-8 text-gray-600">
-                <span>السعر قبل الحسم</span>
+                <span>السعر قبل الحسم للعيادات</span>
                 <span>${{ Cart::subtotal()}}</span>
             </div>
             <div class="font-semibold text-xl px-8 flex justify-between py-8 text-gray-600">
-                <span>السعر بعد الخصم</span>
-@foreach($discount as $discount)  <span>${{ Cart::subtotal()-$discount->company_discount}}</span>
+                <span>  السعر بعد الخصم للعيادات </span>
+                <span>${{ Cart::subtotal()-Cart::subtotal()*($discount->company_discount/100)}}</span>
 
-@endforeach
+
 
             </div>
+                <div class="font-semibold text-l px-8 flex justify-between py-8 text-gray-600">
+                <span class="text-red-400 flex-wrap mx-5"> قيمة حسم العيادات </span>
+                <span class="text-red-400 ">${{$discount->company_discount}}</span>
+                </div>
+            @endcan
+            @can('اعدادت الطالب')
+            <div class="font-semibold text-xl px-8 flex justify-between py-8 text-gray-600">
+                <span>السعر قبل الحسم للطلاب</span>
+                <span>${{ Cart::subtotal()}}</span>
+            </div>
+            <div class="font-semibold text-xl px-8 flex justify-between py-8 text-gray-600">
+                <span>  السعر بعد الحسم للطلاب </span>
+                <span>${{ Cart::subtotal()-Cart::subtotal()*($discount->student_discount/100)}}</span>
+
+
+            </div>
+            @endcan
         </div>
     </div>
 
@@ -184,3 +184,6 @@
 <script src="{{asset('js/index.js')}}"></script>
 </body>
 </html>
+
+
+

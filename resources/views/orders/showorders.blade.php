@@ -1,3 +1,4 @@
+@can('قسم الطلبات')
 @extends('admin.index')
 @section('content')
 
@@ -50,3 +51,4 @@
     </table>
 
 @endsection
+@endcan

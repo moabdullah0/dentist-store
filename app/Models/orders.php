@@ -12,7 +12,7 @@ class orders extends Model
     use Notifiable;
     use HasFactory;
     protected $table='orders';
-    protected $fillable=['id','title','name','descriprion','image','user_id','status','phone','address','email','total_price'];
+    protected $fillable=['id','title','name','descriprion','image','user_id','status','phone','address','email','total_price','price_after_discount'];
 
     public function user(){
         return $this->belongsTo(User::class);

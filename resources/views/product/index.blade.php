@@ -1,3 +1,4 @@
+@can('قسم الطلبات')
 @extends('admin.index')
 @section('content')
 
@@ -16,6 +17,7 @@
                         <h3>الخصم الشركات :<span class="text-danger">{{$product->discount_company}}</span></h3>
                         <h3>حالة التوفر :<span class="text-black-50">{{$product->status}}</span></h3>
                         <h3>الكمية :<span class="text-black-50">{{$product->numofpeace}}</span></h3>
+
 
                         <div class="card-actions">
                             <a href="{{url('/admin/edit-product/'.$product->id)}}" class="btn btn-primary">Edit</a>
@@ -37,3 +39,4 @@
 
 
 @endsection
+@endcan

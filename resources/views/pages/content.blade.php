@@ -18,6 +18,7 @@
 
                 <h1 class="mb-3 font-weight-bold text-2xl"> اهلاً بك</h1>
                 <h2 class="text-xl">هذا الموقع يساعدك على الوصول الى جميع ادوات التي تخص عيادة طب الاسنان من معدات واجهزة تخص العيادة والطالب الجامعي</h2>
+
                     <a href="/products" class="btn btn bg-blue-500 mt-5 rounded-pill">ابدا التسوق من هنا</a>
             </div>
 
@@ -36,14 +37,14 @@
 <!--الاقسام-->
 
 
-<section class=" container items-center">
+<section class=" container items-center  ">
 
-    <h1 class="text-center mb-3 font-extrabold text-xl mt-5">- dentist-</h1>
+    <h1 class="text-center mb-3 font-extrabold text-xl mt-5">- الاقسام-</h1>
 
     <div class="row">
         @foreach($category as $categories)
 
-        <div class="col-lg-4 btn11 cardsection">
+        <div class="col-lg-4 btn11 cardsection justify-center position-sm-relative right-2 d-flex">
             <div class="card w-96 bg-base-100 shadow-xl rounded-2xl">
                 <figure class="px-10 pt-10">
                     <img src="{{ asset('image/' . $categories->image) }}" alt="Shoes" class="rounded-xl show-pop " />
@@ -79,8 +80,8 @@
         <div class="col-lg-6 fottext">
             <ul class="mt-32 mb-32 text-ellipsis">
                 <li class="mb-2"><i class="fa-solid fa-check-double text-blue-400 mx-2 mb-3"></i>  امكانية التواصل مع الادارة بسهولة</li>
-                <li><i class="fa-solid fa-check-double text-blue-400 mx-2 mb-3"></i>امكانية انشاء حساب بسهولة والوصول الى المتجر الذي تريد</li>
-                <li><i class="fa-solid fa-check-double text-blue-400 mx-2 mb-3"></i>امكانية الطلب اونلاين</li>
+                <li><i class="fa-solid fa-check-double text-blue-400 mx-2 mb-3"></i>امكانية انشاء حساب بسهولة والوصول الى القسم والمنتج الذي تريد</li>
+                <li><i class="fa-solid fa-check-double text-blue-400 mx-2 mb-3"></i>امكانية الطلب اونلاين والاطلاع على الحسومات </li>
                 <li class=""><i class="fa-solid fa-check-double text-blue-400 mx-2 mb-3"></i>ماذا تنتظر ابدأ بالتصفح</li>
             </ul>
         </div>

@@ -1,3 +1,4 @@
+@can('صفحة الادمن')
 <!doctype html >
 <html lang="ar" >
 <head>
@@ -299,3 +300,4 @@
 </script>
 </body>
 </html>
+@endcan

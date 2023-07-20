@@ -50,4 +50,15 @@ class Products extends Model implements Buyable
         return $this->price;
         // TODO: Implement getBuyablePrice() method.
     }
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function Wishlist()
+    {
+        return $this->hasMany(Wishlist::class);
+    }
+
+
 }

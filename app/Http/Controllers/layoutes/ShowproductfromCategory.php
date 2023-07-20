@@ -22,8 +22,10 @@ class ShowproductfromCategory extends Controller
 
             $cart=Cart::content();
             $cartCount = Cart::content()->count();
+            $wishlistItems = Auth::user()->wishlist()->get();
 
-            return view('show-product-from-category.index',compact('products','category','cart','cartCount','user'));
+
+            return view('show-product-from-category.index',compact('products','category','cart','cartCount','user','wishlistItems'));
         }
         else{
             return redirect('/');

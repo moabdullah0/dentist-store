@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Products;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CartSetting extends Controller
 {
@@ -36,21 +37,24 @@ class CartSetting extends Controller
      */
     public function show( $id)
     {
+        $user=Auth::user();
         $product = Products::find($id);
         $cart=Cart::content();
         $cartCount = Cart::content()->count();
+        $wishlistItems = Auth::user()->wishlist()->get();
 
-        return view('pages.product-detailes', compact('product', 'cart','cartCount'));
+
+        return view('pages.product-detailes', compact('product', 'cart','cartCount','user','wishlistItems'));
     }
     public function cart(){
 
         $product=Products::all();
-
+$user=Auth::user();
         $cartCount = Cart::content()->count();
 
         $wishlist = Cart::instance('default')->restore(auth()->user()->getAuthIdentifier());
         $cartItems = Cart::instance('default')->content();
-        return view('pages.cart-shopping', compact('product','cartItems','cartCount'));
+        return view('pages.cart-shopping', compact('product','cartItems','cartCount','user'));
     }
 
     public function update(Request $request, $id)

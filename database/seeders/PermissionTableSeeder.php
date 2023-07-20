@@ -17,7 +17,11 @@ class PermissionTableSeeder extends Seeder
             'اعدادات  المستخدمين',
             'التعديل على المنتجات',
             'التعديل على الاقسام',
-
+            'قسم الطلبات',
+            'قسم الحسوم',
+            'اعدادت الطالب',
+            'اعدادات الشركة',
+'صفحة الادمن'
         ];
 
         foreach ($permissions as $permission) {
